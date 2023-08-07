@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://<your domain name>/sitemap.xml
+Host: https://<your domain name>

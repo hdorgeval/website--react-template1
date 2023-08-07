@@ -1,0 +1,230 @@
+.bg-image {
+  position: relative;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 29%;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.font-monserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-raleway {
+  font-family: 'Raleway', sans-serif;
+}
+
+.font-marcellus {
+  font-family: 'Marcellus', serif;
+}
+
+.font-sans-serif {
+  font-family: sans-serif, system-ui;
+}
+
+.font-dancing-script {
+  font-family: 'Dancing Script', cursive;
+}
+
+.font-open-sans {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.font-kite-one {
+  font-family: 'Kite One', sans-serif;
+}
+
+.font-mali {
+  font-family: 'Mali', cursive;
+}
+
+.fs-7 {
+  font-size: 0.8rem !important;
+}
+
+.fs-8 {
+  font-size: 0.75rem !important;
+}
+
+.bi-rotate-180::before {
+  transform: rotate(180deg);
+  -webkit-transform: rotate(-180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+}
+
+.photo-crop-elipse-portrait {
+  border: solid 5px rgba(200, 200, 200, 0.1);
+  position: relative;
+  width: 150px;
+  height: 87px;
+  border-radius: 50% / 50%;
+  overflow: hidden;
+  transform: rotate(-40deg);
+}
+
+.photo-crop-elipse-portrait img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(40deg);
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.bg-color-dark-semi-transparent {
+  background-color: rgba(25, 25, 25, 0.8) !important;
+}
+
+.px-1-01-rem {
+  padding-right: 1.01rem !important;
+  padding-left: 1.01rem !important;
+}
+
+.px-1-06-rem {
+  padding-right: 1.06rem !important;
+  padding-left: 1.06rem !important;
+}
+
+.px-1-07-rem {
+  padding-right: 1.07rem !important;
+  padding-left: 1.07rem !important;
+}
+
+.px-1-08-rem {
+  padding-right: 1.08rem !important;
+  padding-left: 1.08rem !important;
+}
+
+.px-1-09-rem {
+  padding-right: 1.09rem !important;
+  padding-left: 1.09rem !important;
+}
+
+.px-1-17-rem {
+  padding-right: 1.17rem !important;
+  padding-left: 1.17rem !important;
+}
+
+.px-1-22-rem {
+  padding-right: 1.22rem !important;
+  padding-left: 1.22rem !important;
+}
+
+.px-1-45rem {
+  padding-right: 1.45rem !important;
+  padding-left: 1.45rem !important;
+}
+
+.pt-0-56-rem {
+  padding-top: 0.56rem !important;
+}
+
+.pt-0-12-rem {
+  padding-top: 0.12rem !important;
+}
+
+.fs-navbar-toggler-1 {
+  font-size: calc(4.375rem + 1.5vw) !important;
+}
+
+.fs-navbar-toggler-2 {
+  font-size: calc(3.375rem + 1.5vw) !important;
+}
+
+.fs-navbar-toggler-3 {
+  font-size: calc(2.375rem + 1.5vw) !important;
+}
+
+.mt-6 {
+  margin-top: 4rem !important;
+}
+
+.mt-7 {
+  margin-top: 5rem !important;
+}
+
+.pb-6 {
+  padding-bottom: 4rem !important;
+}
+
+.pb-7 {
+  padding-bottom: 5rem !important;
+}
+
+.mb-6 {
+  margin-bottom: 4rem !important;
+}
+
+.mb-7 {
+  margin-bottom: 5rem !important;
+}
+
+.flex-grow-half {
+  flex-grow: 0.5 !important;
+}
+
+.flex-grow-third {
+  flex-grow: 0.3 !important;
+}
+
+.btn-close-thick-3 {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  position: relative;
+  width: calc(1.4rem + 0.6vw) !important;
+  height: calc(1.4rem + 0.6vw) !important;
+}
+
+.btn-close-thick-3::before,
+.btn-close-thick-3::after {
+  content: '';
+  position: absolute;
+  top: 0.6rem !important;
+  left: 0;
+  right: 0;
+  height: 0.3rem;
+  _background: white;
+  border-radius: 0.5rem;
+}
+
+.btn-close-thick-3::before {
+  transform: rotate(45deg);
+}
+
+.btn-close-thick-3::after {
+  transform: rotate(-45deg);
+}
+
+.btn-close-thick-3.text-white::before {
+  background: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
+}
+.btn-close-thick-3.text-white::after {
+  background: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
+}
+
+.text-bg-dark-50 {
+  color: #fff !important;
+  background-color: RGBA(33, 37, 41, var(--bs-bg-opacity, 0.5)) !important;
+}
+
+.text-bg-bordeaux {
+  color: #fff !important;
+  background-color: RGBA(109, 7, 26, var(--bs-bg-opacity, 1)) !important;
+}
+
+.text-bg-bordeaux-50 {
+  color: #fff !important;
+  background-color: RGBA(109, 7, 26, var(--bs-bg-opacity, 0.5)) !important;
+}
