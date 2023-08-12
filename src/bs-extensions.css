@@ -1,3 +1,73 @@
+.navbar-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  transition: all 0.3s ease-out 0s;
+}
+
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+.navbar-toggler .toggler-horizontal-bar {
+  width: 33px;
+  height: 3px;
+  background-color: #fff;
+  display: block;
+  margin: 5px 0;
+  position: relative;
+  -webkit-transition: all 0.3s ease-out 0s;
+  -moz-transition: all 0.3s ease-out 0s;
+  -ms-transition: all 0.3s ease-out 0s;
+  -o-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
+}
+
+.navbar-toggler:not(.collapsed) .toggler-horizontal-bar:nth-of-type(1) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  top: 7px;
+}
+
+.navbar-toggler:not(.collapsed) .toggler-horizontal-bar:nth-of-type(2) {
+  opacity: 0;
+}
+
+.navbar-toggler:not(.collapsed) .toggler-horizontal-bar:nth-of-type(3) {
+  transform: rotate(135deg);
+  top: -9px;
+}
+
+.bg-overlay-70::before {
+  position: absolute;
+  content: '';
+  background-color: rgba(43, 42, 61, 0.7);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.bg-overlay-50::before {
+  position: absolute;
+  content: '';
+  background-color: rgba(43, 42, 61, 0.5);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.z-index-3 {
+  z-index: 3 !important;
+}
 .bg-image {
   position: relative;
   overflow: hidden;
@@ -46,6 +116,10 @@
   font-family: 'Mali', cursive;
 }
 
+.fs-big-1 {
+  font-size: calc(2.7rem + 1.5vw) !important;
+}
+
 .fs-7 {
   font-size: 0.8rem !important;
 }
@@ -54,11 +128,20 @@
   font-size: 0.75rem !important;
 }
 
+.font-weight-700 {
+  font-weight: 700 !important;
+}
+
 .bi-rotate-180::before {
   transform: rotate(180deg);
   -webkit-transform: rotate(-180deg);
   -moz-transform: rotate(180deg);
   -o-transform: rotate(180deg);
+}
+
+.border-photo {
+  border: solid 5px rgba(200, 200, 200, 0.3);
+  border-radius: 50% / 50%;
 }
 
 .photo-crop-elipse-portrait {

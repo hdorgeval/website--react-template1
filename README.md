@@ -19,3 +19,7 @@
 ## Bootstrap 5.3
 
 [Get started](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+
+## Credits
+
+This template is inpired by [UI deck template : simple – Free Bootstrap 5 Website](https://preview.uideck.com/items/simple/)
