@@ -101,6 +101,7 @@ export const LandingPage: FC = () => {
           className="carousel slide carousel-fade w-100"
           data-bs-ride="carousel"
           data-bs-pause="false"
+          data-bs-interval="3000"
           data-bs-theme="dark"
         >
           <div className="carousel-indicators mb-0">
