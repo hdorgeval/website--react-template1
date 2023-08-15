@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Description } from '../components/Description';
 import { useCalendar } from '../hooks/useCalendar';
@@ -8,6 +8,7 @@ import { SocialLinksOffCanvas } from './page-layout/SocialLinksOffCanvas';
 
 export const LandingPage: FC = () => {
   const { currentYear } = useCalendar();
+  const nextSlideButtonRef = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     if (window) {
       window.onscroll = () => {
@@ -22,6 +23,14 @@ export const LandingPage: FC = () => {
         }
       };
     }
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (nextSlideButtonRef && nextSlideButtonRef.current) {
+        nextSlideButtonRef.current?.click();
+      }
+    }, 3000);
   }, []);
 
   return (
@@ -119,6 +128,7 @@ export const LandingPage: FC = () => {
               data-bs-target="#home-carousel"
               data-bs-slide-to="1"
               aria-label="Slide 2"
+              ref={nextSlideButtonRef}
             ></button>
             <button
               className="ms-4 bg-white pt-1"
@@ -129,7 +139,7 @@ export const LandingPage: FC = () => {
             ></button>
           </div>
           <div className="carousel-inner">
-            <div className="carousel-item active" data-bs-interval="3000">
+            <div className="carousel-item active">
               <div
                 className="bg-overlay-50"
                 style={{
@@ -172,7 +182,7 @@ export const LandingPage: FC = () => {
                 </div>
               </div>
             </div>
-            <div className="carousel-item" data-bs-interval="3000">
+            <div className="carousel-item">
               <div
                 className="bg-overlay-50"
                 style={{
@@ -215,7 +225,7 @@ export const LandingPage: FC = () => {
                 </div>
               </div>
             </div>
-            <div className="carousel-item" data-bs-interval="3000">
+            <div className="carousel-item">
               <div
                 className="bg-overlay-50"
                 style={{
