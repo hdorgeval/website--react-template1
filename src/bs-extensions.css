@@ -166,6 +166,12 @@
 .bg-color-dark-semi-transparent {
   background-color: rgba(25, 25, 25, 0.8) !important;
 }
+.bg-color-dark-semi-transparent-25 {
+  background-color: rgba(25, 25, 25, 0.25) !important;
+}
+.bg-color-dark-semi-transparent-50 {
+  background-color: rgba(25, 25, 25, 0.5) !important;
+}
 
 .px-1-01-rem {
   padding-right: 1.01rem !important;

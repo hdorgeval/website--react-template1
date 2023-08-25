@@ -1,6 +1,7 @@
 import { FC, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Description } from '../components/Description';
+import { FiveStarRating } from '../components/FiveStarRating';
 import { useCalendar } from '../hooks/useCalendar';
 import { websiteConfig } from '../website.config';
 import { SocialLinksHorizontalBar } from './page-layout/SocialLinksHorizontalBar';
@@ -143,7 +144,7 @@ export const LandingPage: FC = () => {
               <div
                 className="bg-overlay-50"
                 style={{
-                  backgroundImage: 'url(/images/backgrounds/landing-page.jpg)',
+                  backgroundImage: 'url(/images/backgrounds/landing-page-1.jpg)',
                   minHeight: '100vh',
                   maxHeight: '100vh',
                   backgroundPositionX: '29%',
@@ -274,7 +275,7 @@ export const LandingPage: FC = () => {
 
       <section id="bienvenue" className="w-100" style={{ backgroundColor: '#4f46e5' }}>
         <div className="container">
-          <div className="d-flex flex-column text-start text-light font-dancing-script fs-3 pt-4">
+          <div className="d-flex flex-column text-start text-light font-dancing-script fs-3 py-4">
             <div className="d-flex flex-row justify-content-center align-items-center">
               <div className="border-photo">
                 <img
@@ -309,6 +310,114 @@ export const LandingPage: FC = () => {
                 En savoir plus
               </span>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="temoignages"
+        className="w-100"
+        style={{
+          backgroundImage: 'url(/images/backgrounds/section-testimonies.jpg)',
+          minHeight: '100vh',
+          backgroundPositionX: '29%',
+          backgroundPositionY: '29%',
+          backgroundSize: 'cover',
+          position: 'relative',
+          overflow: 'hidden',
+          backgroundRepeat: 'no-repeat',
+          zIndex: 1,
+        }}
+      >
+        <div className="container-fluid d-flex flex-row justify-content-start align-items-stretch flex-wrap py-4">
+          <div className="card bg-color-dark-semi-transparent-25 text-start text-light font-monserrat m-2">
+            <div className="card-body d-flex flex-column align-items-start">
+              <div className="d-flex px-0 flex-row align-items-center justify-content-between">
+                <div
+                  className="rounded-circle d-flex flex-column align-items-center"
+                  style={{
+                    backgroundColor: '#4f46e5',
+                    width: '3.4rem',
+                    minWidth: '3.4rem',
+                  }}
+                >
+                  <span className="fs-1 fw-bolder px-3 py-1">C</span>
+                </div>
+                <div className="d-flex flex-column align-items-start ms-4">
+                  <div className="card-title fs-5">Carole J.</div>
+                  <div>
+                    <FiveStarRating />
+                  </div>
+                </div>
+              </div>
+              <div className="pt-4 w-100" style={{ maxWidth: '360px' }}>
+                <Description>
+                  Je tiens à remercier Véronica tant pour son écoute que pour son professionnalisme.
+                  Je l'ai consultée pour une problématique récurrente qui enfin, est en passe d'être
+                  réglée définitivement. Et j'ai pu également expérimenter les massages qu'elle
+                  propose... que de la douceur.... du pur bonheur ! Un grand Merci
+                </Description>
+              </div>
+            </div>
+          </div>
+
+          <div className="card bg-color-dark-semi-transparent-25 text-start text-light font-monserrat m-2">
+            <div className="card-body d-flex flex-column align-items-start">
+              <div className="d-flex px-0 flex-row align-items-center justify-content-between">
+                <div
+                  className="rounded-circle d-flex flex-column align-items-center"
+                  style={{
+                    backgroundColor: '#4f46e5',
+                    width: '3.4rem',
+                    minWidth: '3.4rem',
+                  }}
+                >
+                  <span className="fs-1 fw-bolder px-3 py-1">L</span>
+                </div>
+                <div className="d-flex flex-column align-items-start ms-4">
+                  <div className="card-title fs-5">Lolote F.</div>
+                  <div>
+                    <FiveStarRating />
+                  </div>
+                </div>
+              </div>
+              <div className="pt-4 w-100" style={{ maxWidth: '360px' }}>
+                <Description>
+                  J'ai pu essayé le massage qui est extraordinaire au niveau des sensations...plein
+                  d'émotions Un lâcher prise d'une heure et demi !!!
+                </Description>
+              </div>
+            </div>
+          </div>
+
+          <div className="card bg-color-dark-semi-transparent-25 text-start text-light font-monserrat m-2">
+            <div className="card-body d-flex flex-column align-items-start">
+              <div className="d-flex px-0 flex-row align-items-center justify-content-between">
+                <div
+                  className="rounded-circle d-flex flex-column align-items-center"
+                  style={{
+                    backgroundColor: '#4f46e5',
+                    width: '3.4rem',
+                    minWidth: '3.4rem',
+                  }}
+                >
+                  <span className="fs-1 fw-bolder px-3 py-1">C</span>
+                </div>
+                <div className="d-flex flex-column align-items-start ms-4">
+                  <div className="card-title fs-5">Carole G.</div>
+                  <div>
+                    <FiveStarRating />
+                  </div>
+                </div>
+              </div>
+              <div className="pt-4 w-100" style={{ maxWidth: '360px' }}>
+                <Description>
+                  Christina m'a accompagné dans une constellation familiale en individuel. Je me
+                  suis sentie écoutée et en sécurité tout le long. Merci pour ta douceur et ton
+                  professionnalisme 🙏.
+                </Description>
+              </div>
+            </div>
           </div>
         </div>
       </section>
