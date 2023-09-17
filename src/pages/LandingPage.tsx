@@ -504,7 +504,8 @@ export const LandingPage: FC = () => {
                 <div className="input-group">
                   <div className="input-group-text">@</div>
                   <input
-                    type="text"
+                    type="email"
+                    name="email"
                     className="form-control"
                     id="inlineFormInputGroupUsername"
                     placeholder="E-mail"
@@ -517,6 +518,7 @@ export const LandingPage: FC = () => {
                   Envoyer
                 </button>
               </div>
+              <input type="hidden" name="form-name" value="contact" />
             </form>
           </div>
         </section>
