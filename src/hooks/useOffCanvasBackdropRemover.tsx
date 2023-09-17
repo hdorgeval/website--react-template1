@@ -9,5 +9,10 @@ export const useOffCanvasBackdropRemover = () => {
     if (offcanvasBackdrop) {
       offcanvasBackdrop.remove();
     }
+
+    const body = document.querySelector('body');
+    if (body) {
+      body.style.overflow = 'inherit';
+    }
   }, []);
 };

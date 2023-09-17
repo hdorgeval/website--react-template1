@@ -12,6 +12,57 @@ export const LandingPage: FC = () => {
   const nextSlideButtonRef = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     if (window) {
+      window.addEventListener(
+        'load',
+        (event) => {
+          // eslint-disable-next-line no-console
+          console.log('HDO > landing page > load event', event);
+          const observer = new IntersectionObserver(
+            (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
+              // eslint-disable-next-line no-console
+              console.log('--------------');
+              // eslint-disable-next-line no-console
+              console.log('HDO > landing page > intersect event', { entries, observer });
+
+              const focusedEntry = entries
+                .filter((entry) => entry.isIntersecting)
+                .sort((a, b) => a.intersectionRatio - b.intersectionRatio)
+                .pop();
+              // eslint-disable-next-line no-console
+              console.log(
+                `focusedEntry : ${focusedEntry?.target.id} isVisible:${focusedEntry?.isIntersecting}, ratio: ${focusedEntry?.intersectionRatio}`,
+              );
+              if (focusedEntry && focusedEntry.intersectionRatio > 0.11) {
+                const activeLinks = window.document.querySelectorAll(
+                  '#navbarSupportedContent a.active',
+                );
+                if (activeLinks) {
+                  activeLinks.forEach((link) => link.classList.remove('active'));
+                }
+                const newActiveLink = window.document.querySelector(
+                  `#navbarSupportedContent a[href="#${focusedEntry.target.id}"]`,
+                );
+                if (newActiveLink) {
+                  newActiveLink.classList.add('active');
+                }
+              }
+            },
+            {
+              root: null,
+              threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
+            },
+          );
+          const navbarLinks = window.document.querySelectorAll('#navbarSupportedContent a');
+          navbarLinks.forEach((link) => {
+            const cssTargetElement = link.getAttribute('href') ?? 'unknown';
+            const target = document.querySelector(cssTargetElement);
+            if (target) {
+              observer.observe(target);
+            }
+          });
+        },
+        false,
+      );
       window.onscroll = () => {
         const scrollY = window.scrollY;
         const burgerMenu = document.querySelector('nav#burger-menu');
@@ -91,8 +142,13 @@ export const LandingPage: FC = () => {
           </ul>
         </div>
       </nav>
-      <div data-bs-spy="scroll" data-bs-target="#navbarSupportedContent" tabIndex={0}>
-        <section id="home" className="w-100" style={{ maxHeight: '100vh' }}>
+      <div data-bs-target="#navbarSupportedContent" tabIndex={0}>
+        <section
+          id="home"
+          className="w-100"
+          data-bs-target="#navbarSupportedContent"
+          style={{ maxHeight: '100vh' }}
+        >
           <div
             id="home-carousel"
             className="carousel slide carousel-fade w-100"
@@ -262,7 +318,12 @@ export const LandingPage: FC = () => {
           </div>
         </section>
 
-        <section id="bienvenue" className="w-100" style={{ backgroundColor: '#4f46e5' }}>
+        <section
+          id="bienvenue"
+          data-bs-target="#navbarSupportedContent"
+          className="w-100"
+          style={{ backgroundColor: '#4f46e5' }}
+        >
           <div className="container">
             <div className="d-flex flex-column text-start text-light font-dancing-script fs-3 py-4">
               <div className="d-flex flex-row justify-content-center align-items-center">
@@ -305,6 +366,7 @@ export const LandingPage: FC = () => {
 
         <section
           id="temoignages"
+          data-bs-target="#navbarSupportedContent"
           className="w-100"
           style={{
             backgroundImage: 'url(/images/backgrounds/section-testimonies.jpg)',
@@ -409,6 +471,53 @@ export const LandingPage: FC = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section
+          id="contact"
+          data-bs-target="#navbarSupportedContent"
+          className="w-100"
+          style={{
+            backgroundImage: 'url(/images/backgrounds/section-testimonies.jpg)',
+            minHeight: '100vh',
+            backgroundPositionX: '29%',
+            backgroundPositionY: '29%',
+            backgroundSize: 'cover',
+            position: 'relative',
+            overflow: 'hidden',
+            backgroundRepeat: 'no-repeat',
+            zIndex: 1,
+          }}
+        >
+          <div className="container-fluid py-4">
+            <form
+              className="row row-cols-lg-auto g-3 align-items-center"
+              name="contact"
+              method="POST"
+              data-netlify="true"
+            >
+              <div className="col-12">
+                <label className="visually-hidden" htmlFor="inlineFormInputGroupUsername">
+                  E-mail
+                </label>
+                <div className="input-group">
+                  <div className="input-group-text">@</div>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="inlineFormInputGroupUsername"
+                    placeholder="E-mail"
+                  />
+                </div>
+              </div>
+
+              <div className="col-12">
+                <button type="submit" className="btn btn-primary">
+                  Envoyer
+                </button>
+              </div>
+            </form>
           </div>
         </section>
       </div>

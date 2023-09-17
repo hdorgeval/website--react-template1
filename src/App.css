@@ -82,6 +82,75 @@ button:focus {
     transition: all 1s ease-out 0s;
   }
 }
+
+@media only screen and (min-width: 576px) {
+  button#burger-menu-toggler i {
+    color: rgba(var(--bs-dark-rgb), var(--bs-text-opacity)) !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .d-flex.flex-row.flex-wrap .card {
+    max-width: 95vw !important;
+    min-width: 95vw !important;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .d-flex.flex-row.flex-wrap .card {
+    max-width: 48vw !important;
+    min-width: 48vw !important;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .d-flex.flex-row.flex-wrap .card {
+    max-width: 45vw !important;
+    min-width: 45vw !important;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .d-flex.flex-row.flex-wrap .card {
+    max-width: 30vw !important;
+    min-width: 30vw !important;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  div.rounded-circle.d-flex {
+    max-width: 2.7rem !important;
+    min-width: 2.7rem !important;
+  }
+}
+@media only screen and (max-width: 768px) {
+  div.rounded-circle.d-flex {
+    max-width: 3rem !important;
+    min-width: 3rem !important;
+  }
+}
+@media only screen and (max-width: 992px) {
+  div.rounded-circle.d-flex {
+    max-width: 3.5rem !important;
+    min-width: 3.5rem !important;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  div.rounded-circle.d-flex {
+    max-width: 3.6rem !important;
+    min-width: 3.6rem !important;
+  }
+}
+@media only screen and (max-width: 1400px) {
+  div.rounded-circle.d-flex {
+    max-width: 3.7rem !important;
+    min-width: 3.7rem !important;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  div.rounded-circle.d-flex {
+    max-width: 4rem !important;
+    min-width: 4rem !important;
+  }
+}
+
 .introjs-tooltip {
   border-width: 1px !important;
   border-style: solid !important;
