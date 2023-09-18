@@ -34,7 +34,10 @@
     <noscript>You need to enable JavaScript in the Site Settings to run this app.</noscript>
     <!-- A little help for the Netlify post-processing bots -->
     <form name="contact" netlify netlify-honeypot="bot-field" data-netlify-recaptcha="true" hidden>
+      <input type="text" name="name" />
       <input type="email" name="email" />
+      <select name="sujet"></select>
+      <textarea name="message"></textarea>
     </form>
 
     <div id="root"></div>

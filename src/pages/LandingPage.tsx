@@ -491,35 +491,78 @@ export const LandingPage: FC = () => {
           }}
         >
           <div className="container-fluid py-4">
-            <form
-              className="row row-cols-lg-auto g-3 align-items-center"
-              name="contact"
-              method="POST"
-              data-netlify="true"
-            >
-              <div className="col-12">
-                <label className="visually-hidden" htmlFor="inlineFormInputGroupUsername">
-                  E-mail
-                </label>
-                <div className="input-group">
-                  <div className="input-group-text">@</div>
-                  <input
-                    type="email"
-                    name="email"
-                    className="form-control"
-                    id="inlineFormInputGroupUsername"
-                    placeholder="E-mail"
-                  />
-                </div>
-              </div>
+            <div className="card bg-color-dark-semi-transparent-25 text-start text-light font-monserrat m-2">
+              <div className="card-body">
+                <form
+                  className="row g-3 align-items-center"
+                  name="contact"
+                  method="POST"
+                  data-netlify="true"
+                  data-netlify-recaptcha="true"
+                >
+                  <div className="col-12 col-lg-4">
+                    <label className="visually-hidden" htmlFor="contact-field-name">
+                      Nom
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
+                      className="form-control"
+                      placeholder="Votre nom"
+                    />
+                  </div>
+                  <div className="col-12 col-lg-4">
+                    <label className="visually-hidden" htmlFor="contact-field-email">
+                      E-mail
+                    </label>
+                    <div className="input-group">
+                      <div className="input-group-text">@</div>
+                      <input
+                        type="email"
+                        name="email"
+                        className="form-control"
+                        id="contact-field-email"
+                        placeholder="E-mail"
+                      />
+                    </div>
+                  </div>
 
-              <div className="col-12">
-                <button type="submit" className="btn btn-primary">
-                  Envoyer
-                </button>
+                  <div className="col-12 col-lg-4">
+                    <label className="visually-hidden" htmlFor="contact-field-subject">
+                      Sujet
+                    </label>
+                    <select name="sujet" className="form-select" id="contact-field-subject">
+                      <option selected>Sujet...</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="autre">Autre</option>
+                    </select>
+                  </div>
+
+                  <div className="col-12">
+                    <label className="visually-hidden" htmlFor="contact-field-message">
+                      Votre message
+                    </label>
+                    <textarea
+                      className="form-control"
+                      name="message"
+                      id="contact-field-message"
+                      rows={3}
+                      placeholder="Votre message"
+                    ></textarea>
+                  </div>
+
+                  <div className="col-12">
+                    <button type="submit" className="btn btn-primary">
+                      Envoyer
+                    </button>
+                  </div>
+                  <input type="hidden" name="form-name" value="contact" />
+                </form>
               </div>
-              <input type="hidden" name="form-name" value="contact" />
-            </form>
+            </div>
           </div>
         </section>
       </div>
