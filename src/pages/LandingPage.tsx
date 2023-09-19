@@ -588,7 +588,7 @@ export const LandingPage: FC = () => {
                       Vous devez saisir un message en indiquant vos disponibilités.
                     </div>
                   </div>
-
+                  <div className="col-12" data-netlify-recaptcha="true"></div>
                   <div className="col-12">
                     <button type="submit" className="btn btn-primary">
                       Envoyer
@@ -596,6 +596,11 @@ export const LandingPage: FC = () => {
                   </div>
                   <input type="hidden" name="form-name" value="Contact" />
                   <input type="hidden" name="subject" value="Demande de contact" />
+                  <p className="visually-hidden">
+                    <label>
+                      <input name="bot-field" />
+                    </label>
+                  </p>
                 </form>
               </div>
             </div>
