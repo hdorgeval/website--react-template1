@@ -511,6 +511,7 @@ export const LandingPage: FC = () => {
             <div className="card bg-color-dark-semi-transparent-25 text-start text-light font-monserrat m-2">
               <div className="card-body">
                 <form
+                  action="/contact/success"
                   className="row g-3 align-items-center needs-validation"
                   name="Contact"
                   method="POST"
