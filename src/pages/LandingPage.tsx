@@ -495,7 +495,7 @@ export const LandingPage: FC = () => {
               <div className="card-body">
                 <form
                   className="row g-3 align-items-center"
-                  name="contact"
+                  name="Contact"
                   method="POST"
                   data-netlify="true"
                   data-netlify-recaptcha="true"
@@ -506,7 +506,7 @@ export const LandingPage: FC = () => {
                     </label>
                     <input
                       type="text"
-                      name="name"
+                      name="Nom"
                       id="name"
                       className="form-control"
                       placeholder="Votre nom"
@@ -532,7 +532,7 @@ export const LandingPage: FC = () => {
                     <label className="visually-hidden" htmlFor="contact-field-subject">
                       Sujet
                     </label>
-                    <select name="sujet" className="form-select" id="contact-field-subject">
+                    <select name="Sujet" className="form-select" id="contact-field-subject">
                       <option selected>Sujet...</option>
                       <option value="1">1</option>
                       <option value="2">2</option>
@@ -547,7 +547,7 @@ export const LandingPage: FC = () => {
                     </label>
                     <textarea
                       className="form-control"
-                      name="message"
+                      name="Message"
                       id="contact-field-message"
                       rows={3}
                       placeholder="Votre message"
@@ -559,7 +559,8 @@ export const LandingPage: FC = () => {
                       Envoyer
                     </button>
                   </div>
-                  <input type="hidden" name="form-name" value="contact" />
+                  <input type="hidden" name="form-name" value="Contact" />
+                  <input type="hidden" name="subject" value="Demande de contact" />
                 </form>
               </div>
             </div>
