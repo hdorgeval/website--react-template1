@@ -85,6 +85,23 @@ export const LandingPage: FC = () => {
     }, 3000);
   }, []);
 
+  useEffect(() => {
+    const form = document.querySelector('.needs-validation');
+    form?.addEventListener(
+      'submit',
+      (event: Event) => {
+        const targetForm = event?.currentTarget as HTMLFormElement;
+        if (!targetForm.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+
+        targetForm.classList.add('was-validated');
+      },
+      false,
+    );
+  }, []);
+
   return (
     <>
       <nav
@@ -494,11 +511,12 @@ export const LandingPage: FC = () => {
             <div className="card bg-color-dark-semi-transparent-25 text-start text-light font-monserrat m-2">
               <div className="card-body">
                 <form
-                  className="row g-3 align-items-center"
+                  className="row g-3 align-items-center needs-validation"
                   name="Contact"
                   method="POST"
                   data-netlify="true"
                   data-netlify-recaptcha="true"
+                  noValidate
                 >
                   <div className="col-12 col-lg-4">
                     <label className="visually-hidden" htmlFor="contact-field-name">
@@ -510,7 +528,9 @@ export const LandingPage: FC = () => {
                       id="name"
                       className="form-control"
                       placeholder="Votre nom"
+                      required
                     />
+                    <div className="invalid-feedback">Vous devez saisir votre nom.</div>
                   </div>
                   <div className="col-12 col-lg-4">
                     <label className="visually-hidden" htmlFor="contact-field-email">
@@ -524,7 +544,9 @@ export const LandingPage: FC = () => {
                         className="form-control"
                         id="contact-field-email"
                         placeholder="E-mail"
+                        required
                       />
+                      <div className="invalid-feedback">Vous devez saisir votre email.</div>
                     </div>
                   </div>
 
@@ -532,13 +554,21 @@ export const LandingPage: FC = () => {
                     <label className="visually-hidden" htmlFor="contact-field-subject">
                       Sujet
                     </label>
-                    <select name="Sujet" className="form-select" id="contact-field-subject">
-                      <option selected>Sujet...</option>
+                    <select
+                      name="Sujet"
+                      className="form-select"
+                      id="contact-field-subject"
+                      required
+                    >
+                      <option value="" disabled selected hidden>
+                        Sujet...
+                      </option>
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
                       <option value="autre">Autre</option>
                     </select>
+                    <div className="invalid-feedback">Vous devez sélectionner un sujet.</div>
                   </div>
 
                   <div className="col-12">
@@ -550,8 +580,12 @@ export const LandingPage: FC = () => {
                       name="Message"
                       id="contact-field-message"
                       rows={3}
-                      placeholder="Votre message"
+                      placeholder="Votre message (Veuillez également indiquer vos disponibilités)"
+                      required
                     ></textarea>
+                    <div className="invalid-feedback">
+                      Vous devez saisir un message en indiquant vos disponibilités.
+                    </div>
                   </div>
 
                   <div className="col-12">
