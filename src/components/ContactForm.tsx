@@ -1,4 +1,4 @@
-import { FC, FormEvent, useCallback, useEffect } from 'react';
+import { FC, FormEvent, useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MyAnalyticsEvent } from '../hooks/useAnalytics';
 
@@ -9,6 +9,7 @@ export interface ContactFormOwnProps {
 
 export const ContactForm: FC<ContactFormOwnProps> = () => {
   const navigate = useNavigate();
+  const [hasLoadedRecaptchaApi, setHasLoadedRecaptchaApi] = useState(false);
   const handleSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
       const targetForm = event?.currentTarget;
@@ -43,13 +44,37 @@ export const ContactForm: FC<ContactFormOwnProps> = () => {
   }, []);
 
   useEffect(() => {
+    if (!hasLoadedRecaptchaApi) {
+      // eslint-disable-next-line no-console
+      console.log('HDO > useEffect > waiting for lib to load >', { hasLoadedRecaptchaApi });
+      setTimeout(() => {
+        if (grecaptcha) {
+          setHasLoadedRecaptchaApi(true);
+        }
+      }, 3000);
+    }
+  }, [hasLoadedRecaptchaApi]);
+
+  useEffect(() => {
+    if (!hasLoadedRecaptchaApi) {
+      // eslint-disable-next-line no-console
+      console.log('HDO > useEffect > cannot render captach >', { hasLoadedRecaptchaApi });
+      return;
+    }
+
+    // eslint-disable-next-line no-console
+    console.log('HDO > useEffect > can render captach >', { hasLoadedRecaptchaApi });
+
     const captchaContainer = document.querySelector(
       'div[data-netlify-recaptcha="true"]',
     ) as HTMLDivElement;
 
     const hasRendered = captchaContainer?.hasChildNodes() ?? false;
+    if (hasRendered) {
+      return;
+    }
 
-    if (captchaContainer && grecaptcha && !hasRendered) {
+    if (captchaContainer && grecaptcha) {
       try {
         grecaptcha.render(captchaContainer, {
           sitekey: '6LeJmFEoAAAAAHu1dP3cTAj_-2nyiPt_s266kG7l',
@@ -65,6 +90,7 @@ export const ContactForm: FC<ContactFormOwnProps> = () => {
             if (iframeWitdh && iframeHeight) {
               captchaIframe.setAttribute('width', `${Number(iframeWitdh) - 3}`);
               captchaIframe.setAttribute('height', `${Number(iframeHeight) - 3}`);
+              captchaIframe.setAttribute('class', `rounded-3 border border-1`);
             }
           }
         }, 3000);
@@ -72,7 +98,7 @@ export const ContactForm: FC<ContactFormOwnProps> = () => {
         /* empty */
       }
     }
-  }, [captchaCallback]);
+  }, [captchaCallback, hasLoadedRecaptchaApi]);
 
   return (
     <form
