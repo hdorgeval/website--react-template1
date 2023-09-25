@@ -150,7 +150,7 @@ export const ContactForm: FC<ContactFormOwnProps> = () => {
           Sujet
         </label>
         <select name="Sujet" className="form-select" id="contact-field-subject" required>
-          <option value="..." disabled selected hidden>
+          <option value="" disabled selected hidden>
             Sujet...
           </option>
           <option value="1">1</option>
