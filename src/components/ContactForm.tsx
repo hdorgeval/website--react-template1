@@ -55,7 +55,7 @@ export const ContactForm: FC<ContactFormOwnProps> = () => {
           sitekey: '6LeJmFEoAAAAAHu1dP3cTAj_-2nyiPt_s266kG7l',
           callback: captchaCallback,
           theme: 'dark',
-          size: 'compact',
+          size: 'normal',
         });
       } catch (error) {
         /* empty */
