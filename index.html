@@ -32,16 +32,6 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript in the Site Settings to run this app.</noscript>
-    <!-- A little help for the Netlify post-processing bots -->
-    <form name="Contact" netlify netlify-honeypot="bot-field" hidden>
-      <input name="bot-field" />
-      <input type="text" name="Nom" />
-      <input type="email" name="Email" />
-      <select name="Sujet"></select>
-      <textarea name="Message"></textarea>
-      <div data-netlify-recaptcha="true"></div>
-      <input type="hidden" name="subject" value="Demande de contact" />
-    </form>
 
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
@@ -61,5 +51,18 @@
       gtag('js', new Date());
       gtag('config', 'GoogleTagId');
     </script>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <!-- A little help for the Netlify post-processing bots -->
+    <form name="Contact" netlify netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" />
+      <input type="text" name="Nom" autocomplete="name" />
+      <input type="email" name="Email" />
+      <select name="Sujet"></select>
+      <textarea name="Message"></textarea>
+      <div data-netlify-recaptcha="true"></div>
+      <input type="hidden" name="subject" value="Demande de contact" />
+    </form>
   </body>
 </html>

@@ -1,4 +1,4 @@
-import { FC, FormEvent, useCallback } from 'react';
+import { FC, FormEvent, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MyAnalyticsEvent } from '../hooks/useAnalytics';
 
@@ -37,6 +37,32 @@ export const ContactForm: FC<ContactFormOwnProps> = () => {
     [navigate],
   );
 
+  const captchaCallback = useCallback((response: string) => {
+    // eslint-disable-next-line no-console
+    console.log('HDO > captchaCallback', { response });
+  }, []);
+
+  useEffect(() => {
+    const captchaContainer = document.querySelector(
+      'div[data-netlify-recaptcha="true"]',
+    ) as HTMLDivElement;
+
+    const hasRendered = captchaContainer?.hasChildNodes() ?? false;
+
+    if (captchaContainer && grecaptcha && !hasRendered) {
+      try {
+        grecaptcha.render(captchaContainer, {
+          sitekey: '6LeJmFEoAAAAAHu1dP3cTAj_-2nyiPt_s266kG7l',
+          callback: captchaCallback,
+          theme: 'dark',
+          size: 'compact',
+        });
+      } catch (error) {
+        /* empty */
+      }
+    }
+  }, [captchaCallback]);
+
   return (
     <form
       className="row g-3 align-items-center needs-validation"
@@ -55,9 +81,10 @@ export const ContactForm: FC<ContactFormOwnProps> = () => {
         <input
           type="text"
           name="Nom"
-          id="name"
+          id="contact-field-name"
           className="form-control"
           placeholder="Votre nom"
+          autoComplete="name"
           required
         />
         <div className="invalid-feedback">Vous devez saisir votre nom.</div>
@@ -74,6 +101,7 @@ export const ContactForm: FC<ContactFormOwnProps> = () => {
             className="form-control"
             id="contact-field-email"
             placeholder="E-mail"
+            autoComplete="email"
             required
           />
           <div className="invalid-feedback">Vous devez saisir votre email.</div>
@@ -85,7 +113,7 @@ export const ContactForm: FC<ContactFormOwnProps> = () => {
           Sujet
         </label>
         <select name="Sujet" className="form-select" id="contact-field-subject" required>
-          <option value="" disabled selected hidden>
+          <option value="..." disabled selected hidden>
             Sujet...
           </option>
           <option value="1">1</option>
@@ -112,7 +140,7 @@ export const ContactForm: FC<ContactFormOwnProps> = () => {
           Vous devez saisir un message en indiquant vos disponibilités.
         </div>
       </div>
-      <div className="col-12" data-netlify-recaptcha="true"></div>
+      <div className="col-12 g-recaptcha" data-netlify-recaptcha="true" data-theme="dark"></div>
       <div className="col-12">
         <button type="submit" className="btn btn-primary">
           Envoyer
