@@ -190,3 +190,10 @@ button:focus {
 .introjs-skipbutton:hover {
   color: var(--bs-emphasis-color) !important;
 }
+
+.g-recaptcha {
+  transform: scale(0.8) !important;
+  -webkit-transform: scale(0.8) !important;
+  transform-origin: 0 0 !important;
+  -webkit-transform-origin: 0 0 !important;
+}

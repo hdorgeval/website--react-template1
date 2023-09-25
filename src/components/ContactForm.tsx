@@ -140,7 +140,7 @@ export const ContactForm: FC<ContactFormOwnProps> = () => {
           Vous devez saisir un message en indiquant vos disponibilités.
         </div>
       </div>
-      <div className="col-12 g-recaptcha" data-netlify-recaptcha="true" data-theme="dark"></div>
+      <div className="col-12 g-recaptcha" data-netlify-recaptcha="true"></div>
       <div className="col-12">
         <button type="submit" className="btn btn-primary">
           Envoyer
