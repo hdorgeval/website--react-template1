@@ -57,6 +57,17 @@ export const ContactForm: FC<ContactFormOwnProps> = () => {
           theme: 'dark',
           size: 'normal',
         });
+        setTimeout(() => {
+          const captchaIframe = captchaContainer.querySelector('iframe[title="reCAPTCHA"]');
+          if (captchaIframe) {
+            const iframeWitdh = captchaIframe.getAttribute('width');
+            const iframeHeight = captchaIframe.getAttribute('height');
+            if (iframeWitdh && iframeHeight) {
+              captchaIframe.setAttribute('width', `${Number(iframeWitdh) - 3}`);
+              captchaIframe.setAttribute('height', `${Number(iframeHeight) - 3}`);
+            }
+          }
+        }, 3000);
       } catch (error) {
         /* empty */
       }
@@ -156,5 +167,3 @@ export const ContactForm: FC<ContactFormOwnProps> = () => {
     </form>
   );
 };
-
-ContactForm.displayName = 'ContactForm';

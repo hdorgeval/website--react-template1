@@ -192,8 +192,8 @@ button:focus {
 }
 
 .g-recaptcha {
-  transform: scale(0.8) !important;
-  -webkit-transform: scale(0.8) !important;
+  transform: scale(0.9) !important;
+  -webkit-transform: scale(0.9) !important;
   transform-origin: 0 0 !important;
   -webkit-transform-origin: 0 0 !important;
 }
