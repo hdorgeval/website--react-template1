@@ -353,7 +353,7 @@ export const LandingPage: FC = () => {
                     style={{ width: '8rem', minWidth: '8rem' }}
                   />
                 </div>
-                <div className="w-100 ms-4">Je m'appelle Christina Evangelica</div>
+                <div className="w-100 ms-4">Je suis Christina Evangelica</div>
               </div>
               <Description>
                 Je vous reçois dans mon cabinet situé au sud-ouest de Nantes du lundi au samedi de
