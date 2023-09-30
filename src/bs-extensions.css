@@ -355,3 +355,11 @@
   color: #fff !important;
   background-color: RGBA(109, 7, 26, var(--bs-bg-opacity, 0.5)) !important;
 }
+
+.mt-n1 {
+  margin-top: -0.25rem !important;
+}
+
+.mt-n2 {
+  margin-top: -0.5rem !important;
+}

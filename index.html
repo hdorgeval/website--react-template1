@@ -55,13 +55,12 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <!-- A little help for the Netlify post-processing bots -->
-    <form name="Contact" netlify netlify-honeypot="bot-field" hidden>
+    <form name="Contact" netlify netlify-honeypot="bot-field" data-netlify-recaptcha="true" hidden>
       <input name="bot-field" />
       <input type="text" name="Nom" autocomplete="name" />
       <input type="email" name="Email" />
       <select name="Sujet"></select>
       <textarea name="Message"></textarea>
-      <div data-netlify-recaptcha="true"></div>
       <input type="hidden" name="subject" value="Demande de contact" />
     </form>
   </body>

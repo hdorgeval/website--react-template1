@@ -10,6 +10,9 @@ export interface ContactFormOwnProps {
 export const ContactForm: FC<ContactFormOwnProps> = () => {
   const navigate = useNavigate();
   const [hasLoadedRecaptchaApi, setHasLoadedRecaptchaApi] = useState(false);
+  const [recaptchaResponse, setRecaptchaResponse] = useState<string>('');
+  const [captchaId, setCaptchaId] = useState<number | null>(null);
+
   const handleSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
       const targetForm = event?.currentTarget;
@@ -33,20 +36,31 @@ export const ContactForm: FC<ContactFormOwnProps> = () => {
         body: new URLSearchParams(convertedFormEntries).toString(),
       })
         .then(() => navigate('/contact/success'))
-        .catch(() => navigate('/contact/error'));
+        .catch(() => navigate('/contact/error'))
+        .finally(() => {
+          // eslint-disable-next-line no-console
+          console.log('HDO > finally');
+          if (grecaptcha && typeof captchaId === 'number') {
+            grecaptcha.reset(captchaId);
+            setRecaptchaResponse('');
+          }
+        });
     },
-    [navigate],
+    [captchaId, navigate],
   );
 
   const captchaCallback = useCallback((response: string) => {
     // eslint-disable-next-line no-console
     console.log('HDO > captchaCallback', { response });
+    setRecaptchaResponse(response);
+  }, []);
+
+  const expiredCaptchaCallback = useCallback(() => {
+    setRecaptchaResponse('');
   }, []);
 
   useEffect(() => {
     if (!hasLoadedRecaptchaApi) {
-      // eslint-disable-next-line no-console
-      console.log('HDO > useEffect > waiting for lib to load >', { hasLoadedRecaptchaApi });
       setTimeout(() => {
         if (grecaptcha) {
           setHasLoadedRecaptchaApi(true);
@@ -57,13 +71,8 @@ export const ContactForm: FC<ContactFormOwnProps> = () => {
 
   useEffect(() => {
     if (!hasLoadedRecaptchaApi) {
-      // eslint-disable-next-line no-console
-      console.log('HDO > useEffect > cannot render captach >', { hasLoadedRecaptchaApi });
       return;
     }
-
-    // eslint-disable-next-line no-console
-    console.log('HDO > useEffect > can render captach >', { hasLoadedRecaptchaApi });
 
     const captchaContainer = document.querySelector(
       'div[data-netlify-recaptcha="true"]',
@@ -76,12 +85,15 @@ export const ContactForm: FC<ContactFormOwnProps> = () => {
 
     if (captchaContainer && grecaptcha) {
       try {
-        grecaptcha.render(captchaContainer, {
+        const captchaId = grecaptcha.render(captchaContainer, {
           sitekey: '6LeJmFEoAAAAAHu1dP3cTAj_-2nyiPt_s266kG7l',
           callback: captchaCallback,
+          'expired-callback': expiredCaptchaCallback,
           theme: 'dark',
           size: 'normal',
         });
+        setCaptchaId(captchaId);
+
         setTimeout(() => {
           const captchaIframe = captchaContainer.querySelector('iframe[title="reCAPTCHA"]');
           if (captchaIframe) {
@@ -93,12 +105,12 @@ export const ContactForm: FC<ContactFormOwnProps> = () => {
               captchaIframe.setAttribute('class', `rounded-3 border border-1`);
             }
           }
-        }, 3000);
+        }, 0);
       } catch (error) {
         /* empty */
       }
     }
-  }, [captchaCallback, hasLoadedRecaptchaApi]);
+  }, [captchaCallback, expiredCaptchaCallback, hasLoadedRecaptchaApi]);
 
   return (
     <form
@@ -177,7 +189,19 @@ export const ContactForm: FC<ContactFormOwnProps> = () => {
           Vous devez saisir un message en indiquant vos disponibilités.
         </div>
       </div>
-      <div className="col-12 g-recaptcha" data-netlify-recaptcha="true"></div>
+
+      <div className="col-12 ">
+        <div className="g-recaptcha" data-netlify-recaptcha="true"></div>
+        <input
+          className="form-control d-none"
+          value={recaptchaResponse}
+          onChange={() => {}}
+          required
+        />
+        <div className="invalid-feedback mt-n2">
+          Vous devez indiquer que vous n'êtes pas un robot.
+        </div>
+      </div>
       <div className="col-12">
         <button type="submit" className="btn btn-primary">
           Envoyer
