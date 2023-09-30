@@ -13,6 +13,12 @@ export interface WebSiteConfig {
   displaySocialLinksViaButton: boolean;
   displayAccountButtons: boolean;
   recaptchaV2: RecaptchaV2;
+  selectOptions: Record<string, SelectOptions[]>;
+}
+
+export interface SelectOptions {
+  label: string;
+  value: string;
 }
 
 export interface RecaptchaV2 {
@@ -125,5 +131,12 @@ export const websiteConfig: WebSiteConfig = {
     sitekey: '6LeJmFEoAAAAAHu1dP3cTAj_-2nyiPt_s266kG7l',
     theme: 'dark',
     size: 'normal',
+  },
+  selectOptions: {
+    'contact-form-subjects': [
+      { label: '1', value: '1' },
+      { label: '2', value: '2' },
+      { label: 'Autre', value: 'Autre' },
+    ],
   },
 };

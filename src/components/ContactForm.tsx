@@ -1,7 +1,7 @@
 import { FC, FormEvent, useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MyAnalyticsEvent, useAnalytics } from '../hooks/useAnalytics';
-import { websiteConfig } from '../website.config';
+import { SelectOptions, websiteConfig } from '../website.config';
 
 export interface ContactFormOwnProps {
   analyticsEvent?: MyAnalyticsEvent;
@@ -114,6 +114,9 @@ export const ContactForm: FC<ContactFormOwnProps> = ({ analyticsEvent }) => {
     }
   }, [captchaCallback, expiredCaptchaCallback, hasLoadedRecaptchaApi]);
 
+  const subjectOptions: SelectOptions[] =
+    websiteConfig.selectOptions['contact-form-subjects'] ?? [];
+
   return (
     <form
       className="row g-3 align-items-center needs-validation"
@@ -191,10 +194,9 @@ export const ContactForm: FC<ContactFormOwnProps> = ({ analyticsEvent }) => {
           <option value="" disabled selected hidden>
             Sujet...
           </option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="autre">Autre</option>
+          {subjectOptions.map((option) => (
+            <option value={option.value}>{option.label}</option>
+          ))}
         </select>
         <div className="invalid-feedback">Vous devez sélectionner un sujet.</div>
       </div>

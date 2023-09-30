@@ -508,7 +508,7 @@ export const LandingPage: FC = () => {
             zIndex: 1,
           }}
         >
-          <div className="container-fluid py-4 px-0">
+          <div className="container-fluid py-2 px-0 pb-0">
             <div className="card card-sm border border-light border-opacity-50 text-start text-light font-playfair m-2 bg-transparent">
               <div className="card-body">
                 <ContactForm analyticsEvent="contact-form" />
