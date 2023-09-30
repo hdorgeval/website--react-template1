@@ -1,6 +1,7 @@
 import { FC, FormEvent, useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MyAnalyticsEvent } from '../hooks/useAnalytics';
+import { websiteConfig } from '../website.config';
 
 export interface ContactFormOwnProps {
   analyticsEvent?: MyAnalyticsEvent;
@@ -82,11 +83,11 @@ export const ContactForm: FC<ContactFormOwnProps> = () => {
     if (captchaContainer && grecaptcha) {
       try {
         const captchaId = grecaptcha.render(captchaContainer, {
-          sitekey: '6LeJmFEoAAAAAHu1dP3cTAj_-2nyiPt_s266kG7l',
+          sitekey: websiteConfig.recaptchaV2.sitekey,
           callback: captchaCallback,
           'expired-callback': expiredCaptchaCallback,
-          theme: 'dark',
-          size: 'normal',
+          theme: websiteConfig.recaptchaV2.theme,
+          size: websiteConfig.recaptchaV2.size,
         });
         setCaptchaId(captchaId);
 

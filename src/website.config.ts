@@ -12,6 +12,13 @@ export interface WebSiteConfig {
   displaySocialLinksInFooter: boolean;
   displaySocialLinksViaButton: boolean;
   displayAccountButtons: boolean;
+  recaptchaV2: RecaptchaV2;
+}
+
+export interface RecaptchaV2 {
+  sitekey: string;
+  theme: 'dark' | 'light';
+  size: 'normal' | 'compact';
 }
 
 export interface LegalNotice {
@@ -113,5 +120,10 @@ export const websiteConfig: WebSiteConfig = {
       label: 'Itinéraire via Waze',
       show: true,
     },
+  },
+  recaptchaV2: {
+    sitekey: '6LeJmFEoAAAAAHu1dP3cTAj_-2nyiPt_s266kG7l',
+    theme: 'dark',
+    size: 'normal',
   },
 };
