@@ -16,6 +16,10 @@
 
 [Google Analytics](https://analytics.google.com/analytics)
 
+## Google reCAPTCHA
+
+[create reCAPTCHA](https://www.google.com/recaptcha/admin/create)
+
 ## Bootstrap 5.3
 
 [Get started](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
