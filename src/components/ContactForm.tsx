@@ -195,7 +195,7 @@ export const ContactForm: FC<ContactFormOwnProps> = ({ analyticsEvent }) => {
             Sujet...
           </option>
           {subjectOptions.map((option) => (
-            <option value={option.value}>{option.label}</option>
+            <option value={option.value ?? option.label}>{option.label}</option>
           ))}
         </select>
         <div className="invalid-feedback">Vous devez sélectionner un sujet.</div>

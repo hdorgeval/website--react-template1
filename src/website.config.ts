@@ -18,7 +18,7 @@ export interface WebSiteConfig {
 
 export interface SelectOptions {
   label: string;
-  value: string;
+  value?: string;
 }
 
 export interface RecaptchaV2 {
@@ -133,10 +133,6 @@ export const websiteConfig: WebSiteConfig = {
     size: 'normal',
   },
   selectOptions: {
-    'contact-form-subjects': [
-      { label: '1', value: '1' },
-      { label: '2', value: '2' },
-      { label: 'Autre', value: 'Autre' },
-    ],
+    'contact-form-subjects': [{ label: '1' }, { label: '2' }, { label: 'Autre', value: 'Autre' }],
   },
 };
