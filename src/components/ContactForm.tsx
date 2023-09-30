@@ -1,6 +1,6 @@
 import { FC, FormEvent, useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MyAnalyticsEvent } from '../hooks/useAnalytics';
+import { MyAnalyticsEvent, useAnalytics } from '../hooks/useAnalytics';
 import { websiteConfig } from '../website.config';
 
 export interface ContactFormOwnProps {
@@ -8,11 +8,12 @@ export interface ContactFormOwnProps {
   className?: string;
 }
 
-export const ContactForm: FC<ContactFormOwnProps> = () => {
+export const ContactForm: FC<ContactFormOwnProps> = ({ analyticsEvent }) => {
   const navigate = useNavigate();
   const [hasLoadedRecaptchaApi, setHasLoadedRecaptchaApi] = useState(false);
   const [recaptchaResponse, setRecaptchaResponse] = useState<string>('');
   const [captchaId, setCaptchaId] = useState<number | null>(null);
+  const { trackSimpleEvent } = useAnalytics();
 
   const handleSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
@@ -30,6 +31,10 @@ export const ContactForm: FC<ContactFormOwnProps> = () => {
         key,
         typeof value === 'string' ? value : value.name,
       ]);
+
+      if (analyticsEvent) {
+        trackSimpleEvent(analyticsEvent);
+      }
 
       fetch('/', {
         method: 'POST',

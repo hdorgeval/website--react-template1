@@ -511,7 +511,7 @@ export const LandingPage: FC = () => {
           <div className="container-fluid py-4 px-0">
             <div className="card card-sm border border-light border-opacity-50 text-start text-light font-playfair m-2 bg-transparent">
               <div className="card-body">
-                <ContactForm />
+                <ContactForm analyticsEvent="contact-form" />
               </div>
             </div>
           </div>
