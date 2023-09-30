@@ -175,7 +175,7 @@ export const ContactForm: FC<ContactFormOwnProps> = ({ analyticsEvent }) => {
             className="form-control"
             id="contact-field-phone"
             placeholder="Numéro de portable"
-            autoComplete="tel"
+            autoComplete="tel-national"
             maxLength={15}
             required
           />
