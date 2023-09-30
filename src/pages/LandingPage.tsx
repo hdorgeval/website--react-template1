@@ -398,8 +398,8 @@ export const LandingPage: FC = () => {
             zIndex: 1,
           }}
         >
-          <div className="container-fluid d-flex flex-row justify-content-start align-items-stretch flex-wrap py-4">
-            <div className="card bg-color-dark-semi-transparent-25 text-start text-light font-monserrat m-2">
+          <div className="container-fluid d-flex flex-row justify-content-start align-items-stretch flex-wrap py-2 px-0">
+            <div className="card card-sm border border-light border-opacity-50 text-start text-light font-playfair m-2 bg-transparent">
               <div className="card-body d-flex flex-column align-items-start">
                 <div className="d-flex px-0 flex-row align-items-center justify-content-between">
                   <div
@@ -431,7 +431,7 @@ export const LandingPage: FC = () => {
               </div>
             </div>
 
-            <div className="card bg-color-dark-semi-transparent-25 text-start text-light font-monserrat m-2">
+            <div className="card card-sm border border-light border-opacity-50 text-start text-light font-playfair m-2 bg-transparent">
               <div className="card-body d-flex flex-column align-items-start">
                 <div className="d-flex px-0 flex-row align-items-center justify-content-between">
                   <div
@@ -460,7 +460,7 @@ export const LandingPage: FC = () => {
               </div>
             </div>
 
-            <div className="card bg-color-dark-semi-transparent-25 text-start text-light font-monserrat m-2">
+            <div className="card card-sm border border-light border-opacity-50 text-start text-light font-playfair m-2 bg-transparent">
               <div className="card-body d-flex flex-column align-items-start">
                 <div className="d-flex px-0 flex-row align-items-center justify-content-between">
                   <div
@@ -508,8 +508,8 @@ export const LandingPage: FC = () => {
             zIndex: 1,
           }}
         >
-          <div className="container-fluid py-4">
-            <div className="card bg-color-dark-semi-transparent-25 text-start text-light font-monserrat m-2">
+          <div className="container-fluid py-4 px-0">
+            <div className="card card-sm border border-light border-opacity-50 text-start text-light font-playfair m-2 bg-transparent">
               <div className="card-body">
                 <ContactForm />
               </div>
