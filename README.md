@@ -20,6 +20,8 @@
 
 [create reCAPTCHA](https://www.google.com/recaptcha/admin/create)
 
+[reCAPTCHA status](https://www.google.com/recaptcha/admin/site/676436105)
+
 ## Bootstrap 5.3
 
 [Get started](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
