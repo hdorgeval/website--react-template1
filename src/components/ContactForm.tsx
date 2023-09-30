@@ -50,7 +50,7 @@ export const ContactForm: FC<ContactFormOwnProps> = ({ analyticsEvent }) => {
           }
         });
     },
-    [captchaId, navigate],
+    [analyticsEvent, captchaId, navigate, trackSimpleEvent],
   );
 
   const captchaCallback = useCallback((response: string) => {
@@ -136,6 +136,7 @@ export const ContactForm: FC<ContactFormOwnProps> = ({ analyticsEvent }) => {
           className="form-control"
           placeholder="Votre nom"
           autoComplete="name"
+          maxLength={80}
           required
         />
         <div className="invalid-feedback">Vous devez saisir votre nom.</div>
@@ -153,9 +154,32 @@ export const ContactForm: FC<ContactFormOwnProps> = ({ analyticsEvent }) => {
             id="contact-field-email"
             placeholder="E-mail"
             autoComplete="email"
+            maxLength={30}
             required
           />
           <div className="invalid-feedback">Vous devez saisir votre email.</div>
+        </div>
+      </div>
+
+      <div className="col-12 col-lg-4">
+        <label className="visually-hidden" htmlFor="contact-field-phone">
+          Portable
+        </label>
+        <div className="input-group">
+          <div className="input-group-text">
+            <i className="bi bi-telephone-inbound"></i>
+          </div>
+          <input
+            type="tel"
+            name="Portable"
+            className="form-control"
+            id="contact-field-phone"
+            placeholder="Numéro de portable"
+            autoComplete="tel"
+            maxLength={15}
+            required
+          />
+          <div className="invalid-feedback">Vous devez saisir un numéro de téléphone.</div>
         </div>
       </div>
 
