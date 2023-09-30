@@ -38,8 +38,6 @@ export const ContactForm: FC<ContactFormOwnProps> = () => {
         .then(() => navigate('/contact/success'))
         .catch(() => navigate('/contact/error'))
         .finally(() => {
-          // eslint-disable-next-line no-console
-          console.log('HDO > finally');
           if (grecaptcha && typeof captchaId === 'number') {
             grecaptcha.reset(captchaId);
             setRecaptchaResponse('');
@@ -50,8 +48,6 @@ export const ContactForm: FC<ContactFormOwnProps> = () => {
   );
 
   const captchaCallback = useCallback((response: string) => {
-    // eslint-disable-next-line no-console
-    console.log('HDO > captchaCallback', { response });
     setRecaptchaResponse(response);
   }, []);
 
