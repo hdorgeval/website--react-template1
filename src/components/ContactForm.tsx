@@ -125,7 +125,7 @@ export const ContactForm: FC<ContactFormOwnProps> = ({ analyticsEvent }) => {
       noValidate
       onSubmit={handleSubmit}
     >
-      <div className="col-12 col-lg-4">
+      <div className="col-12 col-md-12 col-lg-3">
         <label className="visually-hidden" htmlFor="contact-field-name">
           Nom
         </label>
@@ -141,7 +141,7 @@ export const ContactForm: FC<ContactFormOwnProps> = ({ analyticsEvent }) => {
         />
         <div className="invalid-feedback">Vous devez saisir votre nom.</div>
       </div>
-      <div className="col-12 col-lg-4">
+      <div className="col-12 col-md-6 col-lg-4">
         <label className="visually-hidden" htmlFor="contact-field-email">
           E-mail
         </label>
@@ -161,7 +161,7 @@ export const ContactForm: FC<ContactFormOwnProps> = ({ analyticsEvent }) => {
         </div>
       </div>
 
-      <div className="col-12 col-lg-4">
+      <div className="col-12 col-md-6 col-lg-2">
         <label className="visually-hidden" htmlFor="contact-field-phone">
           Portable
         </label>
@@ -183,7 +183,7 @@ export const ContactForm: FC<ContactFormOwnProps> = ({ analyticsEvent }) => {
         </div>
       </div>
 
-      <div className="col-12 col-lg-4">
+      <div className="col-12 col-md-12 col-lg-3">
         <label className="visually-hidden" htmlFor="contact-field-subject">
           Sujet
         </label>
