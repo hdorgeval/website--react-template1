@@ -99,15 +99,25 @@ button:focus {
     max-width: 95vw !important;
     min-width: 95vw !important;
   }
+
+  .d-flex.flex-row.flex-wrap .card.card-xl {
+    max-width: 95vw !important;
+    min-width: 95vw !important;
+  }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 768px) {
   .d-flex.flex-row.flex-wrap .card.card-sm {
-    max-width: 95vw !important;
-    min-width: 95vw !important;
+    max-width: 97vw !important;
+    min-width: 97vw !important;
   }
 
   .d-flex.flex-row.flex-wrap .card.card-lg {
+    max-width: 97vw !important;
+    min-width: 97vw !important;
+  }
+
+  .d-flex.flex-row.flex-wrap .card.card-xl {
     max-width: 97vw !important;
     min-width: 97vw !important;
   }
@@ -122,6 +132,11 @@ button:focus {
   .d-flex.flex-row.flex-wrap .card.card-lg {
     max-width: 46vw !important;
     min-width: 46vw !important;
+  }
+
+  .d-flex.flex-row.flex-wrap .card.card-xl {
+    max-width: 98vw !important;
+    min-width: 98vw !important;
   }
 
   .read-more-sm {
@@ -145,6 +160,11 @@ button:focus {
     min-width: 45vw !important;
   }
 
+  .d-flex.flex-row.flex-wrap .card.card-xl {
+    max-width: 91.5vw !important;
+    min-width: 91.5vw !important;
+  }
+
   .read-more-sm {
     overflow: auto !important;
     max-height: inherit !important;
@@ -163,6 +183,11 @@ button:focus {
   .d-flex.flex-row.flex-wrap .card.card-lg {
     max-width: 45vw !important;
     min-width: 45vw !important;
+  }
+
+  .d-flex.flex-row.flex-wrap .card.card-xl {
+    max-width: 61vw !important;
+    min-width: 61vw !important;
   }
 
   .read-more-sm {
