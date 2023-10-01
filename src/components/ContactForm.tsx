@@ -1,7 +1,8 @@
-import { FC, FormEvent, useCallback, useEffect, useState } from 'react';
+import { FC, FormEvent, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MyAnalyticsEvent, useAnalytics } from '../hooks/useAnalytics';
 import { SelectOptions, websiteConfig } from '../website.config';
+import { Recaptcha } from './Recaptcha';
 
 export interface ContactFormOwnProps {
   analyticsEvent?: MyAnalyticsEvent;
@@ -10,9 +11,6 @@ export interface ContactFormOwnProps {
 
 export const ContactForm: FC<ContactFormOwnProps> = ({ analyticsEvent }) => {
   const navigate = useNavigate();
-  const [hasLoadedRecaptchaApi, setHasLoadedRecaptchaApi] = useState(false);
-  const [recaptchaResponse, setRecaptchaResponse] = useState<string>('');
-  const [captchaId, setCaptchaId] = useState<number | null>(null);
   const { trackSimpleEvent } = useAnalytics();
 
   const handleSubmit = useCallback(
@@ -43,76 +41,10 @@ export const ContactForm: FC<ContactFormOwnProps> = ({ analyticsEvent }) => {
       })
         .then(() => navigate('/contact/success'))
         .catch(() => navigate('/contact/error'))
-        .finally(() => {
-          if (grecaptcha && typeof captchaId === 'number') {
-            grecaptcha.reset(captchaId);
-            setRecaptchaResponse('');
-          }
-        });
+        .finally(() => {});
     },
-    [analyticsEvent, captchaId, navigate, trackSimpleEvent],
+    [analyticsEvent, navigate, trackSimpleEvent],
   );
-
-  const captchaCallback = useCallback((response: string) => {
-    setRecaptchaResponse(response);
-  }, []);
-
-  const expiredCaptchaCallback = useCallback(() => {
-    setRecaptchaResponse('');
-  }, []);
-
-  useEffect(() => {
-    if (!hasLoadedRecaptchaApi) {
-      setTimeout(() => {
-        if (grecaptcha) {
-          setHasLoadedRecaptchaApi(true);
-        }
-      }, 3000);
-    }
-  }, [hasLoadedRecaptchaApi]);
-
-  useEffect(() => {
-    if (!hasLoadedRecaptchaApi) {
-      return;
-    }
-
-    const captchaContainer = document.querySelector(
-      'div[data-netlify-recaptcha="true"]',
-    ) as HTMLDivElement;
-
-    const hasRendered = captchaContainer?.hasChildNodes() ?? false;
-    if (hasRendered) {
-      return;
-    }
-
-    if (captchaContainer && grecaptcha) {
-      try {
-        const captchaId = grecaptcha.render(captchaContainer, {
-          sitekey: websiteConfig.recaptchaV2.sitekey,
-          callback: captchaCallback,
-          'expired-callback': expiredCaptchaCallback,
-          theme: websiteConfig.recaptchaV2.theme,
-          size: websiteConfig.recaptchaV2.size,
-        });
-        setCaptchaId(captchaId);
-
-        setTimeout(() => {
-          const captchaIframe = captchaContainer.querySelector('iframe[title="reCAPTCHA"]');
-          if (captchaIframe) {
-            const iframeWitdh = captchaIframe.getAttribute('width');
-            const iframeHeight = captchaIframe.getAttribute('height');
-            if (iframeWitdh && iframeHeight) {
-              captchaIframe.setAttribute('width', `${Number(iframeWitdh) - 3}`);
-              captchaIframe.setAttribute('height', `${Number(iframeHeight) - 3}`);
-              captchaIframe.setAttribute('class', `rounded-3 border border-1`);
-            }
-          }
-        }, 0);
-      } catch (error) {
-        /* empty */
-      }
-    }
-  }, [captchaCallback, expiredCaptchaCallback, hasLoadedRecaptchaApi]);
 
   const subjectOptions: SelectOptions[] =
     websiteConfig.selectOptions['contact-form-subjects'] ?? [];
@@ -240,18 +172,9 @@ export const ContactForm: FC<ContactFormOwnProps> = ({ analyticsEvent }) => {
       </div>
 
       <div className="col-12 ">
-        <div className="g-recaptcha" data-netlify-recaptcha="true"></div>
-        <input
-          id="contact-field-recaptcha-response"
-          className="form-control d-none"
-          value={recaptchaResponse}
-          onChange={() => {}}
-          required
-        />
-        <div className="invalid-feedback mt-n2">
-          Vous devez indiquer que vous n'êtes pas un robot.
-        </div>
+        <Recaptcha />
       </div>
+
       <div className="col-12">
         <button type="submit" className="btn btn-primary">
           Envoyer
