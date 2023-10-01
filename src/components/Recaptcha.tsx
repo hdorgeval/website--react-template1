@@ -22,10 +22,10 @@ export const Recaptcha: FC<RecaptchaOwnProps> = () => {
   useEffect(() => {
     if (grecaptcha && typeof captchaId === 'number') {
       return () => {
-        // eslint-disable-next-line no-console
-        console.log('HDO > useEffect > cleanup', { captchaId });
-        grecaptcha.reset(captchaId);
-        setRecaptchaResponse('');
+        if (grecaptcha && captchaId) {
+          grecaptcha.reset(captchaId);
+          setRecaptchaResponse('');
+        }
       };
     }
   }, [captchaId]);
@@ -64,8 +64,6 @@ export const Recaptcha: FC<RecaptchaOwnProps> = () => {
           size: websiteConfig.recaptchaV2.size,
         });
         setCaptchaId(captchaId);
-        // eslint-disable-next-line no-console
-        console.log('HDO > useEffect >', { captchaId });
 
         setTimeout(() => {
           const captchaIframe = captchaContainer.querySelector('iframe[title="reCAPTCHA"]');
