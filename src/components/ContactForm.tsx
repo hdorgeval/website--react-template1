@@ -128,6 +128,9 @@ export const ContactForm: FC<ContactFormOwnProps> = ({ analyticsEvent }) => {
       noValidate
       onSubmit={handleSubmit}
     >
+      <div className="col-12">
+        <span className="fs-3 fw-bolder">Contactez-moi</span>
+      </div>
       <div className="col-12 col-md-12 col-lg-3">
         <label className="visually-hidden" htmlFor="contact-field-name">
           Nom
@@ -194,8 +197,13 @@ export const ContactForm: FC<ContactFormOwnProps> = ({ analyticsEvent }) => {
           <option value="" disabled selected hidden>
             Sujet...
           </option>
-          {subjectOptions.map((option) => (
-            <option value={option.value ?? option.label}>{option.label}</option>
+          {subjectOptions.map((option, index) => (
+            <option
+              value={option.value ?? option.label}
+              key={`${option.value ?? option.label}${index}`}
+            >
+              {option.label}
+            </option>
           ))}
         </select>
         <div className="invalid-feedback">Vous devez sélectionner un sujet.</div>
@@ -209,18 +217,32 @@ export const ContactForm: FC<ContactFormOwnProps> = ({ analyticsEvent }) => {
           className="form-control"
           name="Message"
           id="contact-field-message"
-          rows={3}
-          placeholder="Votre message (Veuillez également indiquer vos disponibilités)"
+          rows={4}
+          placeholder="Votre message"
           required
         ></textarea>
-        <div className="invalid-feedback">
-          Vous devez saisir un message en indiquant vos disponibilités.
-        </div>
+        <div className="invalid-feedback">Vous devez saisir un message.</div>
+      </div>
+
+      <div className="col-12">
+        <label className="visually-hidden" htmlFor="contact-field-when-i-am-available">
+          Vos disponibilités
+        </label>
+        <textarea
+          className="form-control"
+          name="Disponibilités"
+          id="contact-field-when-i-am-available"
+          rows={2}
+          placeholder="Vos disponibilités (jours / horaires)"
+          required
+        ></textarea>
+        <div className="invalid-feedback">Vous devez saisir vos disponibilités.</div>
       </div>
 
       <div className="col-12 ">
         <div className="g-recaptcha" data-netlify-recaptcha="true"></div>
         <input
+          id="contact-field-recaptcha-response"
           className="form-control d-none"
           value={recaptchaResponse}
           onChange={() => {}}
@@ -245,3 +267,5 @@ export const ContactForm: FC<ContactFormOwnProps> = ({ analyticsEvent }) => {
     </form>
   );
 };
+
+ContactForm.displayName = 'ContactForm';
