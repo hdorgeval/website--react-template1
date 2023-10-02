@@ -125,8 +125,8 @@ button:focus {
 
 @media only screen and (min-width: 768px) and (max-width: 992px) {
   .d-flex.flex-row.flex-wrap .card.card-sm {
-    max-width: 48vw !important;
-    min-width: 48vw !important;
+    max-width: 46vw !important;
+    min-width: 46vw !important;
   }
 
   .d-flex.flex-row.flex-wrap .card.card-lg {
