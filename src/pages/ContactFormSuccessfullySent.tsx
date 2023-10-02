@@ -1,7 +1,12 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
+import { useModalBackdropRemover } from '../hooks/useModalBackdropRemover';
+import { useOffCanvasBackdropRemover } from '../hooks/useOffCanvasBackdropRemover';
 
 export const ContactFormSuccessfullySent: FC = () => {
+  useOffCanvasBackdropRemover();
+  useModalBackdropRemover();
+
   return (
     <div
       className="container w-100 d-flex flex-column justify-content-center"

@@ -1,9 +1,14 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { OpenExternalLink } from '../components/OpenExternalLink';
+import { useModalBackdropRemover } from '../hooks/useModalBackdropRemover';
+import { useOffCanvasBackdropRemover } from '../hooks/useOffCanvasBackdropRemover';
 import { websiteConfig } from '../website.config';
 
 export const ContactFormError: FC = () => {
+  useOffCanvasBackdropRemover();
+  useModalBackdropRemover();
+
   return (
     <div
       className="container w-100 d-flex flex-column justify-content-center align-items-center"
