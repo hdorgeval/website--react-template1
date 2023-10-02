@@ -92,7 +92,6 @@ export const Recaptcha: FC<RecaptchaOwnProps> = ({ theme, invalidFeedbackClassNa
         id="contact-field-recaptcha-response"
         className="form-control d-none"
         value={recaptchaResponse}
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
         onChange={() => {}}
         required
       />
