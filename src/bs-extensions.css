@@ -363,3 +363,23 @@
 .mt-n2 {
   margin-top: -0.5rem !important;
 }
+
+.bg-form-field {
+  background-color: rgba(70, 90, 126, 0.4) !important;
+}
+.bg-form-field::placeholder {
+  opacity: 0.9;
+  color: rgba(var(--bs-light-rgb), var(--bs-text-opacity)) !important;
+}
+.input-group-text.bg-form-field {
+  background-color: rgba(48, 62, 87, 0.5) !important;
+  color: rgba(var(--bs-light-rgb), var(--bs-text-opacity)) !important;
+}
+
+select.bg-form-field {
+  color: rgba(var(--bs-light-rgb), var(--bs-text-opacity)) !important;
+}
+
+textarea.bg-form-field {
+  color: rgba(var(--bs-light-rgb), var(--bs-text-opacity)) !important;
+}
