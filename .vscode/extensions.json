@@ -10,6 +10,7 @@
     "jumpinjackie.vscode-map-preview",
     "oderwat.indent-rainbow",
     "wmaurer.change-case",
-    "valentjn.vscode-ltex"
+    "valentjn.vscode-ltex",
+    "SonarSource.sonarlint-vscode"
   ]
 }
