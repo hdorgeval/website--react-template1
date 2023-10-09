@@ -1,6 +1,7 @@
 import { FC, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ContactForm } from '../components/ContactForm';
+import { CookieConsent } from '../components/CookieConsent';
 import { Description } from '../components/Description';
 import { FiveStarRating } from '../components/FiveStarRating';
 import { useCalendar } from '../hooks/useCalendar';
@@ -535,6 +536,7 @@ export const LandingPage: FC = () => {
           </div>
         </div>
       </footer>
+      <CookieConsent />
     </>
   );
 };
