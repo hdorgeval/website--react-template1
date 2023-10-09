@@ -95,11 +95,7 @@ export const Recaptcha: FC<RecaptchaOwnProps> = ({ theme, invalidFeedbackClassNa
         onChange={() => {}}
         required
       />
-      <div
-        className={`invalid-feedback mt-n2 ${
-          invalidFeedbackClassName ? invalidFeedbackClassName : ''
-        }`}
-      >
+      <div className={`invalid-feedback mt-n2 ${invalidFeedbackClassName ?? ''}`}>
         Vous devez indiquer que vous n'êtes pas un robot.
       </div>
     </>
