@@ -14,7 +14,9 @@ export type MyAnalyticsEvent =
   | 'open-my-youtube'
   | 'open-waze'
   | 'rdv-entretien-prealable'
-  | 'rdv-ou-contact';
+  | 'rdv-ou-contact'
+  | 'user-consent-approved'
+  | 'user-consent-rejected';
 
 export type CommandType = 'js' | 'config' | 'event';
 declare global {
