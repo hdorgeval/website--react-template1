@@ -4,11 +4,20 @@ import { websiteConfig } from '../website.config';
 import { useAnalytics } from './useAnalytics';
 export interface ConsentData {
   status?: 'pending' | 'approved' | 'rejected' | 'custom';
+  dateApproved?: string;
 }
 
 const initialConsentData: ConsentData = {
   status: 'pending',
 };
+
+function toIsoDate(value: Date): string {
+  const year = new Intl.DateTimeFormat('fr', { year: 'numeric' }).format(value);
+  const day = new Intl.DateTimeFormat('fr', { day: '2-digit' }).format(value);
+  const month = new Intl.DateTimeFormat('fr', { month: '2-digit' }).format(value);
+
+  return `${year}/${month}/${day}`;
+}
 
 export const useConsent = () => {
   const { trackSimpleEvent } = useAnalytics();
@@ -27,7 +36,7 @@ export const useConsent = () => {
   }, [consent]);
 
   const approve = useCallback(() => {
-    setConsent({ ...consent, status: 'approved' });
+    setConsent({ ...consent, status: 'approved', dateApproved: toIsoDate(new Date()) });
     trackSimpleEvent('user-consent-approved');
   }, [consent, setConsent, trackSimpleEvent]);
 
