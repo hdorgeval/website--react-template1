@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import { useConsent } from './useConsent';
 
 export type MyAnalyticsEvent =
   | 'appel-telephone'
@@ -26,20 +27,46 @@ declare global {
 }
 
 export const useAnalytics = () => {
-  const trackSimpleEvent = useCallback((myEvent: MyAnalyticsEvent) => {
-    try {
-      window.gtag('event', myEvent);
-    } catch (error) {
-      // no op
-    }
-  }, []);
+  const { isPending, isRejected } = useConsent();
 
-  const trackOpenExternalLinkEvent = useCallback((url: string) => {
-    try {
-      window.gtag('event', 'open-external-link', { url });
-    } catch (error) {
-      // no op
-    }
-  }, []);
+  const shouldTrack = useCallback(
+    (myEvent: MyAnalyticsEvent): boolean => {
+      if (myEvent === 'user-consent-rejected' || myEvent === 'user-consent-approved') {
+        return true;
+      }
+      if (isPending || isRejected) {
+        return false;
+      }
+
+      return true;
+    },
+    [isPending, isRejected],
+  );
+
+  const trackSimpleEvent = useCallback(
+    (myEvent: MyAnalyticsEvent) => {
+      try {
+        if (shouldTrack(myEvent)) {
+          window.gtag('event', myEvent);
+        }
+      } catch (error) {
+        // no op
+      }
+    },
+    [shouldTrack],
+  );
+
+  const trackOpenExternalLinkEvent = useCallback(
+    (url: string) => {
+      try {
+        if (shouldTrack('open-external-link')) {
+          window.gtag('event', 'open-external-link', { url });
+        }
+      } catch (error) {
+        // no op
+      }
+    },
+    [shouldTrack],
+  );
   return { trackSimpleEvent, trackOpenExternalLinkEvent };
 };

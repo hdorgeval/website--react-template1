@@ -1,10 +1,10 @@
 import { useCallback, useMemo } from 'react';
 import useLocalStorageState from 'use-local-storage-state';
 import { websiteConfig } from '../website.config';
-import { useAnalytics } from './useAnalytics';
 export interface ConsentData {
   status?: 'pending' | 'approved' | 'rejected' | 'custom';
   dateApproved?: string;
+  dateRejected?: string;
 }
 
 const initialConsentData: ConsentData = {
@@ -19,16 +19,37 @@ function toIsoDate(value: Date): string {
   return `${year}/${month}/${day}`;
 }
 
-export const useConsent = () => {
-  const { trackSimpleEvent } = useAnalytics();
-
+export interface ConsentHookProps {
+  isPending: boolean;
+  isApproved: boolean;
+  isRejected: boolean;
+  approve: () => void;
+  reject: () => void;
+}
+export const useConsent = (): ConsentHookProps => {
   const [consent, setConsent] = useLocalStorageState<ConsentData>(
     `${websiteConfig.websiteUrl}.consent`,
     { defaultValue: initialConsentData },
   );
 
-  const isPending = useMemo(() => {
+  const isPending = useMemo((): boolean => {
     if (consent?.status === 'pending' || consent?.status === undefined) {
+      return true;
+    }
+
+    return false;
+  }, [consent]);
+
+  const isApproved = useMemo((): boolean => {
+    if (consent?.status === 'approved') {
+      return true;
+    }
+
+    return false;
+  }, [consent]);
+
+  const isRejected = useMemo((): boolean => {
+    if (consent?.status === 'rejected') {
       return true;
     }
 
@@ -37,16 +58,16 @@ export const useConsent = () => {
 
   const approve = useCallback(() => {
     setConsent({ ...consent, status: 'approved', dateApproved: toIsoDate(new Date()) });
-    trackSimpleEvent('user-consent-approved');
-  }, [consent, setConsent, trackSimpleEvent]);
+  }, [consent, setConsent]);
 
   const reject = useCallback(() => {
-    setConsent({ ...consent, status: 'rejected' });
-    trackSimpleEvent('user-consent-rejected');
-  }, [consent, setConsent, trackSimpleEvent]);
+    setConsent({ ...consent, status: 'rejected', dateRejected: toIsoDate(new Date()) });
+  }, [consent, setConsent]);
 
   return {
     isPending,
+    isApproved,
+    isRejected,
     approve,
     reject,
   };

@@ -1,4 +1,5 @@
 import { FC, useCallback } from 'react';
+import { useAnalytics } from '../hooks/useAnalytics';
 import { useConsent } from '../hooks/useConsent';
 
 export interface CookieConsentOwnProps {
@@ -7,12 +8,17 @@ export interface CookieConsentOwnProps {
 
 export const CookieConsent: FC<CookieConsentOwnProps> = () => {
   const { isPending, approve, reject } = useConsent();
+  const { trackSimpleEvent } = useAnalytics();
+
   const handleApprove = useCallback(() => {
     approve();
-  }, [approve]);
+    trackSimpleEvent('user-consent-approved');
+  }, [approve, trackSimpleEvent]);
+
   const handleReject = useCallback(() => {
     reject();
-  }, [reject]);
+    trackSimpleEvent('user-consent-rejected');
+  }, [reject, trackSimpleEvent]);
 
   if (!isPending) {
     return null;
