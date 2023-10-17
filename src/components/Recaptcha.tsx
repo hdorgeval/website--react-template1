@@ -15,18 +15,30 @@ export const Recaptcha: FC<RecaptchaOwnProps> = ({ theme, invalidFeedbackClassNa
   const [captchaId, setCaptchaId] = useState<number | null>(null);
 
   const captchaCallback = useCallback((response: string) => {
-    setRecaptchaResponse(response);
+    try {
+      setRecaptchaResponse(response);
+    } catch (error) {
+      /* empty */
+    }
   }, []);
 
   const expiredCaptchaCallback = useCallback(() => {
-    setRecaptchaResponse('');
+    try {
+      setRecaptchaResponse('');
+    } catch (error) {
+      /* empty */
+    }
   }, []);
   useEffect(() => {
     if (grecaptcha && typeof captchaId === 'number') {
       return () => {
-        if (grecaptcha && captchaId) {
-          grecaptcha.reset(captchaId);
-          setRecaptchaResponse('');
+        try {
+          if (grecaptcha && typeof captchaId === 'number') {
+            grecaptcha.reset(captchaId);
+            setRecaptchaResponse('');
+          }
+        } catch (error) {
+          /* empty */
         }
       };
     }
@@ -35,8 +47,12 @@ export const Recaptcha: FC<RecaptchaOwnProps> = ({ theme, invalidFeedbackClassNa
   useEffect(() => {
     if (!hasLoadedRecaptchaApi) {
       setTimeout(() => {
-        if (grecaptcha) {
-          setHasLoadedRecaptchaApi(true);
+        try {
+          if (grecaptcha) {
+            setHasLoadedRecaptchaApi(true);
+          }
+        } catch (error) {
+          /* empty */
         }
       }, 3000);
     }
