@@ -105,6 +105,12 @@
 .max-vw-80 {
   max-width: 80vw !important;
 }
+.max-vw-85 {
+  max-width: 85vw !important;
+}
+.max-vw-90 {
+  max-width: 90vw !important;
+}
 
 .bg-image {
   position: relative;
