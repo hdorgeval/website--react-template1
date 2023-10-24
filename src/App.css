@@ -110,6 +110,11 @@ button:focus {
     min-width: 83vw !important;
   }
 
+  .d-flex.flex-row.flex-wrap .d-flex.flex-column .btn.btn-outline-light {
+    max-width: none !important;
+    min-width: 0 !important;
+  }
+
   div.rounded-circle.d-flex {
     max-width: 2.7rem !important;
     min-width: 2.7rem !important;
@@ -130,6 +135,11 @@ button:focus {
   .d-flex.flex-row.flex-wrap .card.card-xl {
     max-width: 97vw !important;
     min-width: 97vw !important;
+  }
+
+  .d-flex.flex-row.flex-wrap .d-flex.flex-column .btn.btn-outline-light {
+    max-width: none !important;
+    min-width: 0 !important;
   }
 
   div.rounded-circle.d-flex {
@@ -154,6 +164,11 @@ button:focus {
     min-width: 94vw !important;
   }
 
+  .d-flex.flex-row.flex-wrap .d-flex.flex-column .btn.btn-outline-light {
+    max-width: none !important;
+    min-width: 0 !important;
+  }
+
   .read-more-sm {
     overflow: auto !important;
     max-height: inherit !important;
@@ -170,6 +185,10 @@ button:focus {
 
   .fs-6-md {
     font-size: 1rem !important;
+  }
+
+  .fs-7-md {
+    font-size: 0.8rem !important;
   }
 }
 
@@ -189,6 +208,11 @@ button:focus {
     min-width: 91.5vw !important;
   }
 
+  .d-flex.flex-row.flex-wrap .d-flex.flex-column .btn.btn-outline-light {
+    max-width: none !important;
+    min-width: 0 !important;
+  }
+
   .read-more-sm {
     overflow: auto !important;
     max-height: inherit !important;
@@ -202,7 +226,16 @@ button:focus {
     max-width: 3.6rem !important;
     min-width: 3.6rem !important;
   }
+
+  .fs-6-md {
+    font-size: 1rem !important;
+  }
+
+  .fs-7-md {
+    font-size: 0.8rem !important;
+  }
 }
+
 @media only screen and (min-width: 1200px) and (max-width: 1400px) {
   .d-flex.flex-row.flex-wrap .card.card-sm {
     max-width: 30vw !important;
@@ -219,6 +252,11 @@ button:focus {
     min-width: 61vw !important;
   }
 
+  .d-flex.flex-row.flex-wrap .d-flex.flex-column .btn.btn-outline-light {
+    max-width: none !important;
+    min-width: 0 !important;
+  }
+
   .read-more-sm {
     overflow: auto !important;
     max-height: inherit !important;
@@ -231,6 +269,14 @@ button:focus {
   div.rounded-circle.d-flex {
     max-width: 3.7rem !important;
     min-width: 3.7rem !important;
+  }
+
+  .fs-6-md {
+    font-size: 1rem !important;
+  }
+
+  .fs-7-md {
+    font-size: 0.8rem !important;
   }
 }
 
@@ -250,6 +296,11 @@ button:focus {
     min-width: 61vw !important;
   }
 
+  .d-flex.flex-row.flex-wrap .d-flex.flex-column .btn.btn-outline-light {
+    max-width: none !important;
+    min-width: 0 !important;
+  }
+
   .read-more-sm {
     overflow: auto !important;
     max-height: inherit !important;
@@ -262,6 +313,14 @@ button:focus {
   div.rounded-circle.d-flex {
     max-width: 4rem !important;
     min-width: 4rem !important;
+  }
+
+  .fs-6-md {
+    font-size: 1rem !important;
+  }
+
+  .fs-7-md {
+    font-size: 0.8rem !important;
   }
 }
 
