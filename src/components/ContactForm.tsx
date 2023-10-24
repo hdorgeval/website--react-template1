@@ -125,8 +125,14 @@ export const ContactForm: FC<ContactFormOwnProps> = ({ analyticsEvent }) => {
         <label className="visually-hidden" htmlFor="contact-field-subject">
           Sujet
         </label>
-        <select name="Sujet" className="form-select" id="contact-field-subject" required>
-          <option value="" disabled selected hidden>
+        <select
+          name="Sujet"
+          className="form-select"
+          id="contact-field-subject"
+          required
+          defaultValue=""
+        >
+          <option value="" disabled hidden>
             Sujet...
           </option>
           {subjectOptions.map((option, index) => (
