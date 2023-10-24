@@ -104,6 +104,16 @@ button:focus {
     max-width: 95vw !important;
     min-width: 95vw !important;
   }
+
+  .d-flex.flex-row.flex-wrap .btn.btn-outline-light {
+    max-width: 83vw !important;
+    min-width: 83vw !important;
+  }
+
+  div.rounded-circle.d-flex {
+    max-width: 2.7rem !important;
+    min-width: 2.7rem !important;
+  }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 768px) {
@@ -121,6 +131,11 @@ button:focus {
     max-width: 97vw !important;
     min-width: 97vw !important;
   }
+
+  div.rounded-circle.d-flex {
+    max-width: 3rem !important;
+    min-width: 3rem !important;
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 992px) {
@@ -135,8 +150,8 @@ button:focus {
   }
 
   .d-flex.flex-row.flex-wrap .card.card-xl {
-    max-width: 98vw !important;
-    min-width: 98vw !important;
+    max-width: 94vw !important;
+    min-width: 94vw !important;
   }
 
   .read-more-sm {
@@ -146,6 +161,15 @@ button:focus {
 
   .read-more-sm [role='button'] {
     display: none !important;
+  }
+
+  div.rounded-circle.d-flex {
+    max-width: 3.5rem !important;
+    min-width: 3.5rem !important;
+  }
+
+  .fs-6-md {
+    font-size: 1rem !important;
   }
 }
 
@@ -173,8 +197,13 @@ button:focus {
   .read-more-sm [role='button'] {
     display: none !important;
   }
+
+  div.rounded-circle.d-flex {
+    max-width: 3.6rem !important;
+    min-width: 3.6rem !important;
+  }
 }
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1200px) and (max-width: 1400px) {
   .d-flex.flex-row.flex-wrap .card.card-sm {
     max-width: 30vw !important;
     min-width: 30vw !important;
@@ -198,70 +227,38 @@ button:focus {
   .read-more-sm [role='button'] {
     display: none !important;
   }
-}
 
-@media only screen and (max-width: 576px) {
-  div.rounded-circle.d-flex {
-    max-width: 2.7rem !important;
-    min-width: 2.7rem !important;
-  }
-}
-@media only screen and (max-width: 768px) {
-  div.rounded-circle.d-flex {
-    max-width: 3rem !important;
-    min-width: 3rem !important;
-  }
-}
-@media only screen and (max-width: 992px) {
-  div.rounded-circle.d-flex {
-    max-width: 3.5rem !important;
-    min-width: 3.5rem !important;
-  }
-}
-@media only screen and (max-width: 1200px) {
-  div.rounded-circle.d-flex {
-    max-width: 3.6rem !important;
-    min-width: 3.6rem !important;
-  }
-}
-@media only screen and (max-width: 1400px) {
   div.rounded-circle.d-flex {
     max-width: 3.7rem !important;
     min-width: 3.7rem !important;
   }
 }
-@media only screen and (min-width: 1400px) {
-  div.rounded-circle.d-flex {
-    max-width: 4rem !important;
-    min-width: 4rem !important;
-  }
-}
 
-@media only screen and (max-width: 768px) {
-  div.rounded-circle.d-flex {
-    max-width: 3rem !important;
-    min-width: 3rem !important;
-  }
-}
-@media only screen and (max-width: 992px) {
-  div.rounded-circle.d-flex {
-    max-width: 3.5rem !important;
-    min-width: 3.5rem !important;
-  }
-}
-@media only screen and (max-width: 1200px) {
-  div.rounded-circle.d-flex {
-    max-width: 3.6rem !important;
-    min-width: 3.6rem !important;
-  }
-}
-@media only screen and (max-width: 1400px) {
-  div.rounded-circle.d-flex {
-    max-width: 3.7rem !important;
-    min-width: 3.7rem !important;
-  }
-}
 @media only screen and (min-width: 1400px) {
+  .d-flex.flex-row.flex-wrap .card.card-sm {
+    max-width: 30vw !important;
+    min-width: 30vw !important;
+  }
+
+  .d-flex.flex-row.flex-wrap .card.card-lg {
+    max-width: 45vw !important;
+    min-width: 45vw !important;
+  }
+
+  .d-flex.flex-row.flex-wrap .card.card-xl {
+    max-width: 61vw !important;
+    min-width: 61vw !important;
+  }
+
+  .read-more-sm {
+    overflow: auto !important;
+    max-height: inherit !important;
+  }
+
+  .read-more-sm [role='button'] {
+    display: none !important;
+  }
+
   div.rounded-circle.d-flex {
     max-width: 4rem !important;
     min-width: 4rem !important;
