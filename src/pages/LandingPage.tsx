@@ -1,17 +1,21 @@
-import { FC, useEffect, useRef } from 'react';
+import { FC, useCallback, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ContactForm } from '../components/ContactForm';
 import { CookieConsent } from '../components/CookieConsent';
 import { Description } from '../components/Description';
 import { FiveStarRating } from '../components/FiveStarRating';
+import { useAnalytics } from '../hooks/useAnalytics';
 import { useCalendar } from '../hooks/useCalendar';
+import { useHashToScrollIfNeeded } from '../hooks/useHashToScrollIfNeeded';
 import { websiteConfig } from '../website.config';
 import { SocialLinksHorizontalBar } from './page-layout/SocialLinksHorizontalBar';
 import { SocialLinksOffCanvas } from './page-layout/SocialLinksOffCanvas';
 
 export const LandingPage: FC = () => {
+  useHashToScrollIfNeeded({ position: 'nearest' });
   const { currentYear } = useCalendar();
   const nextSlideButtonRef = useRef<HTMLButtonElement>(null);
+  const { trackSimpleEvent } = useAnalytics();
   useEffect(() => {
     if (window) {
       window.addEventListener(
@@ -103,6 +107,10 @@ export const LandingPage: FC = () => {
       false,
     );
   }, []);
+
+  const handleClickOnBienvenue = useCallback(() => {
+    trackSimpleEvent('bienvenue');
+  }, [trackSimpleEvent]);
 
   return (
     <>
@@ -239,6 +247,7 @@ export const LandingPage: FC = () => {
                       data-wow-duration="1.3s"
                       data-wow-delay="0.8s"
                       href="#bienvenue"
+                      onClick={handleClickOnBienvenue}
                     >
                       Bienvenue !
                     </a>

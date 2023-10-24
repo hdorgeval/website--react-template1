@@ -3,6 +3,7 @@ import { useConsent } from './useConsent';
 
 export type MyAnalyticsEvent =
   | 'appel-telephone'
+  | 'bienvenue'
   | 'contact-form'
   | 'envoie-mail'
   | 'has-completed-guided-tour'
