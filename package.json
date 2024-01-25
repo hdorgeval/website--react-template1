@@ -1,5 +1,5 @@
 {
-  "name": "heart-of-listening",
+  "name": "website--react-template1",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -43,7 +43,7 @@
     "eslint-plugin-import": "2.28.0",
     "eslint-plugin-prettier": "5.0.0",
     "eslint-plugin-react-hooks": "4.6.0",
-    "netlify-cli": "15.10.0",
+    "netlify-cli": "16.9.3",
     "rimraf": "5.0.5",
     "ts-node": "10.9.1",
     "typescript": "5.1.6",
