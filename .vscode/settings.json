@@ -2,9 +2,9 @@
   "languageTool.enabled": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
-    "source.fixAll": true,
-    "source.organizeImports": true,
-    "source.fixAll.markdownlint": true
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit",
+    "source.fixAll.markdownlint": "explicit"
   },
   "editor.bracketPairColorization.enabled": true,
   "editor.formatOnPaste": true,
